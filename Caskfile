@@ -1,0 +1,46 @@
+# This is a Brewfile for phinze/homebrew-cask
+# Run `brew bundle Caskfile`
+
+# Install cask
+brew 'caskroom/cask/brew-cask'
+tap 'caskroom/versions'
+tap 'caskroom/fonts'
+
+# Fonts
+cask 'font-source-code-pro'
+
+# Quick Look plugins
+cask 'qlcolorcode'
+cask 'qlmarkdown'
+cask 'qlstephen'
+cask 'qlimagesize'
+cask 'quicklook-json'
+cask 'quicklook-csv'
+cask 'betterzipql'
+
+# Applications
+cask '1password'
+cask 'airserver'
+cask 'alfred'
+cask 'appcleaner'
+cask 'atom'
+cask 'bartender'
+cask 'cleanmymac2'
+cask 'fantastical1'
+cask 'flash-player'
+cask 'google-chrome'
+cask 'macid'
+cask 'mplayerx'
+cask 'neteasemusic'
+cask 'sublime-text3'
+cask 'xtrafinder'
+
+# Development
+cask 'iterm2'
+cask 'mamp'
+cask 'phpstorm'
+cask 'phpstorm-eap'
+cask 'sequel-pro'
+cask 'sourcetree'
+cask 'vagrant'
+cask 'virtualbox'
