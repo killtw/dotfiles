@@ -5,30 +5,31 @@ all:
 	sudo -v
 	ln -fs $(DOTFILE)/dotfiles ~
 
-	ifeq (, $(shell which git))
-		apt-get update -y
-		apt-get install git -y
-	endif
+ifeq (, $(shell which git))
+	apt-get update -y
+	apt-get install git -y
+endif
 
-	ifeq ($(OS),Linux)
-		_zsh _vim _ssh _git _nvm _rvm _tmux
-	else
-		# Expand save panel by default
-		defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-		# Check for software updates daily, not just once per week
-		defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
-		# Avoid creating .DS_Store files on network volumes
-		defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-		# Show the ~/Library folder
-		chflags nohidden ~/Library
+ifeq ($(OS),Linux)
+	make _zsh _vim _ssh _git _tmux
+else
+	# Expand save panel by default
+	defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+	# Check for software updates daily, not just once per week
+	defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+	# Avoid creating .DS_Store files on network volumes
+	defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+	# Show the ~/Library folder
+	chflags nohidden ~/Library
 
-		_homebrew _zsh _vim _ssh _git _nvm _rvm _tmux
-	endif
+	make _homebrew _zsh _vim _ssh _git _nvm _rvm _tmux
+endif
 _zsh:
-	ifeq (, $(shell which zsh))
-		apt-get update -y
-		apt-get install git -y
-	endif
+ifeq (, $(shell which zsh))
+	sudo -v
+	apt-get update -y
+	apt-get install zsh -y
+endif
 	@sh -c "$$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 	rm ~/.zshrc
 	ln -fs $(DOTFILE)/zshrc ~/.zshrc
