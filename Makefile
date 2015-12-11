@@ -2,12 +2,11 @@ OS := $(shell uname)
 DOTFILE := $(shell pwd)
 
 all:
-	sudo -v
 	ln -fs $(DOTFILE)/dotfiles ~
 
 ifeq (, $(shell which git))
-	apt-get update -y
-	apt-get install git -y
+	sudo apt-get update -y
+	sudo apt-get install git -y
 endif
 
 ifeq ($(OS),Linux)
@@ -26,9 +25,8 @@ else
 endif
 _zsh:
 ifeq (, $(shell which zsh))
-	sudo -v
-	apt-get update -y
-	apt-get install zsh -y
+	sudo apt-get update -y
+	sudo apt-get install zsh -y
 endif
 	@sh -c "$$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 	rm ~/.zshrc
