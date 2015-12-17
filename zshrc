@@ -41,7 +41,7 @@ ZSH_THEME="killtw"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew brew-cask git rvm npm subl composer vagrant laravel zsh-syntax-highlighting z)
+plugins=(brew brew-cask git rvm npm subl composer vagrant laravel zsh-syntax-highlighting z keychain)
 
 source $ZSH/oh-my-zsh.sh
 
