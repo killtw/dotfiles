@@ -30,8 +30,9 @@ ifeq (, $(shell which zsh))
 endif
 	@sh -c "$$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 	rm ~/.zshrc
+	rm -rf ~/.oh-my-zsh/custom
 	ln -fs $(DOTFILE)/zshrc ~/.zshrc
-	ln -fs $(DOTFILE)/oh-my-zsh/custom/killtw.zsh-theme ~/.oh-my-zsh/custom
+	ln -fs $(DOTFILE)/oh-my-zsh/custom ~/.oh-my-zsh
 _vim:
 	ln -fs $(DOTFILE)/vim ~/.vim
 	ln -fs $(DOTFILE)/vimrc ~/.vimrc

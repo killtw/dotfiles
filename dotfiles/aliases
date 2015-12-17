@@ -13,17 +13,12 @@ alias vs="vagrant ssh"
 alias vu="vagrant up"
 alias vd="vagrant destroy"
 alias vh="vagrant halt"
-
-# Laravel
-alias art="php artisan"
-alias hs="homestead"
 alias vm="ssh vagrant@127.0.0.1 -p 2222"
-alias routes="art route:list"
 
 # PHP
-# alias phpunit="vendor/bin/phpunit"
+alias php='php -dzend_extension=/Applications/MAMP/bin/php/php5.6.10/lib/php/extensions/no-debug-non-zts-20131226/xdebug.so'
+alias phpunit='php vendor/bin/phpunit'
 alias behat="vendor/bin/behat"
-alias ba="behat --append-snippets"
 alias hcomposer="hhvm /usr/local/bin/composer"
 
 # flyingV
