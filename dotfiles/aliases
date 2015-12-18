@@ -1,6 +1,7 @@
 # General
 alias ..="cd .."
 alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+alias java="/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java"
 
 # Git
 alias gs="git status"
@@ -16,6 +17,7 @@ alias vh="vagrant halt"
 alias vm="ssh vagrant@127.0.0.1 -p 2222"
 
 # PHP
+alias art="php artisan"
 alias php='php -dzend_extension=/Applications/MAMP/bin/php/php5.6.10/lib/php/extensions/no-debug-non-zts-20131226/xdebug.so'
 alias phpunit='php vendor/bin/phpunit'
 alias behat="vendor/bin/behat"
