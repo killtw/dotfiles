@@ -50,7 +50,7 @@ export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 export PATH="$HOME/bin:$PATH"
 
 # MAMP PHP
-export PATH="/Applications/MAMP/bin/php/php5.6.10/bin:$PATH"
+export PATH="/Applications/MAMP/bin/php/php7.0.0/bin:$PATH"
 # Composer bin
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 # homebrew

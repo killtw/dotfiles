@@ -10,7 +10,7 @@ ifeq (, $(shell which git))
 endif
 
 ifeq ($(OS),Linux)
-	make _zsh _vim _ssh _git _tmux
+	make _zsh _vim _git _tmux
 else
 	# Expand save panel by default
 	defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -21,7 +21,7 @@ else
 	# Show the ~/Library folder
 	chflags nohidden ~/Library
 
-	make _homebrew _zsh _vim _ssh _git _nvm _rvm _tmux
+	make _homebrew _zsh _vim _git _nvm _rvm _tmux
 endif
 _zsh:
 ifeq (, $(shell which zsh))
@@ -36,8 +36,6 @@ endif
 _vim:
 	ln -fs $(DOTFILE)/vim ~/.vim
 	ln -fs $(DOTFILE)/vimrc ~/.vimrc
-_ssh:
-	ln -fs $(DOTFILE)/ssh ~/.ssh
 _git:
 	ln -fs $(DOTFILE)/gitconfig ~/.gitconfig
 	ln -fs $(DOTFILE)/gitignore_global ~/.gitignore_global

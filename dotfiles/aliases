@@ -18,7 +18,7 @@ alias vm="ssh vagrant@127.0.0.1 -p 2222"
 
 # PHP
 alias art="php artisan"
-alias php='php -dzend_extension=/Applications/MAMP/bin/php/php5.6.10/lib/php/extensions/no-debug-non-zts-20131226/xdebug.so'
+#alias php='php -dzend_extension=/Applications/MAMP/bin/php/php5.6.10/lib/php/extensions/no-debug-non-zts-20131226/xdebug.so'
 alias phpunit='php vendor/bin/phpunit'
 alias behat="vendor/bin/behat"
 alias hcomposer="hhvm /usr/local/bin/composer"
