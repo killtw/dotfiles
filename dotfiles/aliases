@@ -14,14 +14,27 @@ alias vs="vagrant ssh"
 alias vu="vagrant up"
 alias vd="vagrant destroy"
 alias vh="vagrant halt"
-alias vm="ssh vagrant@127.0.0.1 -p 2222"
+function vm() {
+   cd ~/Dropbox/Develop/Homestead
+   
+   command="$1"
+
+   if [ "$command" = "edit" ]; then
+      subl ~/.homestead/homestead.yaml
+   else
+      if [ -z "$command" ]; then 
+         command="ssh"
+      fi
+   
+      eval "vagrant ${command}"
+   fi
+
+   #switch back to directory where command was performed in
+   cd -
+}
 
 # PHP
 alias art="php artisan"
-#alias php='php -dzend_extension=/Applications/MAMP/bin/php/php5.6.10/lib/php/extensions/no-debug-non-zts-20131226/xdebug.so'
-alias phpunit='php vendor/bin/phpunit'
+alias phpunit="php vendor/bin/phpunit"
 alias behat="vendor/bin/behat"
-alias hcomposer="hhvm /usr/local/bin/composer"
 
-# flyingV
-alias fly="ssh killtw@106.187.41.28"
