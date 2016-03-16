@@ -21,3 +21,8 @@ function toggleiTerm() {
         esac
     done
 }
+
+function restartBlueTooth() {
+    kextunload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTransport
+    kextload -b com.apple.iokit.BroadcomBluetoothHostControllerUSBTransport
+}
