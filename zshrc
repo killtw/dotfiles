@@ -41,7 +41,7 @@ ZSH_THEME="killtw"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew brew-cask git rvm npm subl composer vagrant laravel zsh-syntax-highlighting z keychain)
+plugins=(git rvm npm composer zsh-syntax-highlighting z keychain zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -70,3 +70,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
