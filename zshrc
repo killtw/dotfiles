@@ -16,7 +16,7 @@ ZSH_THEME="killtw"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+# DISABLE_AUTO_UPDATE="false"
 
 # Uncomment to change how often before auto-updates occur? (in days)
 # export UPDATE_ZSH_DAYS=13
@@ -56,11 +56,10 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 # homebrew
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 # RVM
-export PATH="$PATH:$HOME/.rvm/bin"
+#export PATH="$PATH:$HOME/.rvm/bin"
 
 # Load NVM
 [[ -s "$HOME/.nvm" ]] && . "$HOME/.nvm/nvm.sh"
-#. ~/.nvm/nvm.sh
 
 # Load RVM
 #[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
