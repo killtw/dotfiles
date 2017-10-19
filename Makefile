@@ -20,6 +20,13 @@ else
 	defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 	# Show the ~/Library folder
 	chflags nohidden ~/Library
+	# Use current directory as default search scope in Finder
+	defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+	# Show icons for hard drives, servers, and removable media on the desktop
+	defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true && \
+	defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true && \
+	defaults write com.apple.finder ShowMountedServersOnDesktop -bool true && \
+	defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
 	make _homebrew _zsh _vim _git _nvm _rvm _tmux
 endif
