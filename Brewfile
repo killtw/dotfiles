@@ -1,7 +1,9 @@
-brew 'wget'
-brew 'vim', args: ['override-system-vi']
-brew 'zsh'
-brew 'tmux'
+brew 'mas'
 brew 'ssh-copy-id'
+brew 'tmux'
+brew 'vim', args: ['with-override-system-vi', 'with-lua']
+brew 'wget'
+brew 'yarn', args: ['without-node']
+brew 'zsh'
+
 tap 'caskroom/cask'
-tap 'homebrew/bundle'
