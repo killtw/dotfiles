@@ -26,6 +26,7 @@ cask 'bartender'
 cask 'caffeine'
 cask 'cleanmymac2'
 cask 'daisydisk'
+cask 'dropbox'
 cask 'droplr'
 cask 'flash-player'
 cask 'google-chrome'
@@ -51,3 +52,8 @@ cask 'rubymine'
 cask 'sequel-pro'
 cask 'tower'
 cask 'visual-studio-code'
+
+# Mac App Store
+mas install 918858936 #Airmail 3
+mas install 880001334 #Reeder
+mas install 445189367 #PopClip
