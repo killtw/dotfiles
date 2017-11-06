@@ -1,8 +1,7 @@
-# This is a Brewfile for phinze/homebrew-cask
-# Run `brew bundle Caskfile`
+# This is a Brewfile for caskroom/homebrew-cask
+# Run `brew bundle --file=Caskfile`
 
 # Install cask
-tap 'caskroom/cask'
 tap 'caskroom/versions'
 tap 'caskroom/fonts'
 
