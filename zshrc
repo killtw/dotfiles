@@ -26,13 +26,14 @@ plugins=(git rvm composer zsh-syntax-highlighting z keychain zsh-autosuggestions
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:`yarn global bin`:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$PATH"
 
 # Composer bin
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 # Load NVM
 [[ -s "$HOME/.nvm" ]] && . "$HOME/.nvm/nvm.sh"
+export PATH="`yarn global bin`:$PATH"
 
 # Load Z
 [[ -s "$HOME/dotfiles/z" ]] && . "$HOME/dotfiles/z/z.sh"
