@@ -1,3 +1,4 @@
+brew 'mackup'
 brew 'mas'
 brew 'ssh-copy-id'
 brew 'tmux'
