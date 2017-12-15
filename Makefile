@@ -28,6 +28,11 @@ else
 	defaults write com.apple.finder ShowMountedServersOnDesktop -bool true && \
 	defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
+  # Change screenshot folder
+	defaults write com.apple.screencapture location ~/Downloads
+	# Change screenshot filetype to png
+	defaults write com.apple.screencapture type png
+
 	make _homebrew _zsh _vim _git _nvm _rvm _tmux
 endif
 _zsh:
