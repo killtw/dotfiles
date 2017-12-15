@@ -26,7 +26,7 @@ plugins=(git rvm composer zsh-syntax-highlighting z keychain zsh-autosuggestions
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/bin:$PATH"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:$HOME/bin:$PATH"
 
 # Composer bin
 export PATH="$HOME/.composer/vendor/bin:$PATH"
@@ -38,11 +38,6 @@ export PATH="`yarn global bin`:$PATH"
 # Load Z
 [[ -s "$HOME/dotfiles/z" ]] && . "$HOME/dotfiles/z/z.sh"
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# Load RVM
 export PATH="$PATH:$HOME/.rvm/bin"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/killtw/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/killtw/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/killtw/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/killtw/google-cloud-sdk/completion.zsh.inc'; fi
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
