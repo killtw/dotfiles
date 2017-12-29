@@ -17,11 +17,14 @@ alias art="php artisan"
 alias phpunit="php vendor/bin/phpunit"
 
 function tinker() {
-    if art | grep -q tinx ; then
-        art tinx
-    else
-        art tinker
+    if [ -e "artisan" ] ; then
+        if art | grep -q tinx ; then
+            art tinx
+        else
+            art tinker
+        fi
     fi
+    [ -e "Rakefile" ] && bundle exec rails c
 }
 
 function migrate() {
