@@ -16,5 +16,13 @@ alias ctop="docker run --rm -ti -v /var/run/docker.sock:/var/run/docker.sock qua
 alias art="php artisan"
 alias tinker="php artisan tinker"
 alias phpunit="php vendor/bin/phpunit"
-alias behat="vendor/bin/behat"
 
+function migrate() {
+  [ -e "artisan" ] && php artisan migrate
+  [ -e "Rakefile" ] && bundle exec rake db:migrate
+}
+
+function rollback() {
+  [ -e "artisan" ] && php artisan migrate:rollback
+  [ -e "Rakefile" ] && bundle exec rake db:rollback
+}

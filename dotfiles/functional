@@ -25,13 +25,3 @@ function docker-cleanup {
     fi
   fi
 }
-
-function migrate() {
-  [ -e "artisan" ] && php artisan migrate
-  [ -e "Rakefile" ] && rake db:migrate
-}
-
-function rollback() {
-  [ -e "artisan" ] && php artisan migrate:rollback
-  [ -e "Rakefile" ] && rake db:rollback
-}
