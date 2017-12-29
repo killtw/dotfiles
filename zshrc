@@ -33,6 +33,7 @@ export PATH="$HOME/.composer/vendor/bin:$PATH"
 
 # Load NVM
 [[ -s "$HOME/.nvm" ]] && . "$HOME/.nvm/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 export PATH="`yarn global bin`:$PATH"
 
 # Load Z
