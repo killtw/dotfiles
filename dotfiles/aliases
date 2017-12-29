@@ -14,8 +14,15 @@ alias ctop="docker run --rm -ti -v /var/run/docker.sock:/var/run/docker.sock qua
 
 # PHP
 alias art="php artisan"
-alias tinker="php artisan tinker"
 alias phpunit="php vendor/bin/phpunit"
+
+function tinker() {
+    if art | grep -q tinx ; then
+        art tinx
+    else
+        art tinker
+    fi
+}
 
 function migrate() {
   [ -e "artisan" ] && php artisan migrate
