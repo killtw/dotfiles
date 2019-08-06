@@ -33,7 +33,7 @@ else
 	# Change screenshot filetype to png
 	defaults write com.apple.screencapture type png
 
-	make _homebrew _zsh _vim _git _nvm _rvm _tmux
+	make _homebrew _zsh _vim _git _tmux
 endif
 _zsh:
 ifeq (, $(shell which zsh))
@@ -56,10 +56,5 @@ _homebrew:
 	brew tap Homebrew/bundle
 	brew bundle
 	brew bundle --file=$(DOTFILE)/Caskfile
-_nvm:
-	@sh -c "$$(curl -fsSL https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh)"
-_rvm:
-	gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-	curl -sSL https://get.rvm.io | bash -s stable
 _tmux:
 	ln -fs $(DOTFILE)/tmux.conf ~/.tmux.conf
