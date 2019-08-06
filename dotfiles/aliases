@@ -1,6 +1,11 @@
 # General
 alias ..="cd .."
-alias java="/Library/Internet\ Plug-Ins/JavaAppletPlugin.plugin/Contents/Home/bin/java"
+alias cat="bat"
+
+function mk() {
+    mkdir -p -- "$1"
+    cd -P -- "$1"
+}
 
 # Git
 alias gs="git status"
@@ -10,11 +15,12 @@ alias bc="brew cask"
 
 # Docker
 alias dc="docker-compose"
-alias ctop="docker run --rm -ti -v /var/run/docker.sock:/var/run/docker.sock quay.io/vektorlab/ctop:latest"
+alias ctop="docker run --rm -ti --name ctop -v /var/run/docker.sock:/var/run/docker.sock quay.io/vektorlab/ctop:latest"
 
 # PHP
+alias x="composer"
 alias art="php artisan"
-alias phpunit="php vendor/bin/phpunit"
+#alias phpunit="php vendor/bin/phpunit"
 
 function tinker() {
     if [ -e "artisan" ] ; then
