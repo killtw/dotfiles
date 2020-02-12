@@ -14,12 +14,12 @@ function docker-cleanup {
     echo $DANGLING
   else
     if [ -n "$EXITED" ]; then
-      docker rm $EXITED
+      docker rm -f $EXITED
     else
       echo "No containers to remove."
     fi
     if [ -n "$DANGLING" ]; then
-      docker rmi $DANGLING
+      docker rmi -f $DANGLING
     else
       echo "No images to remove."
     fi
