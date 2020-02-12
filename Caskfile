@@ -1,9 +1,10 @@
 # This is a Brewfile for caskroom/homebrew-cask
 # Run `brew bundle --file=Caskfile`
 
-# Install cask
-tap 'caskroom/versions'
-tap 'caskroom/fonts'
+# Tapping casks
+tap 'homebrew/cask-versions'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-drivers'
 
 # Fonts
 cask 'font-source-code-pro'
@@ -18,41 +19,37 @@ cask 'quicklook-csv'
 cask 'quicklook-json'
 
 # Applications
-cask '1password'
+cask '1password6'
 cask 'alfred'
 cask 'appcleaner'
-cask 'atom'
 cask 'bartender'
 cask 'caffeine'
-cask 'daisydisk'
-cask 'dropbox'
+# cask 'dropbox'
 cask 'droplr'
-cask 'flash-player'
 cask 'google-chrome'
 cask 'google-drive-file-stream'
 cask 'iina'
 cask 'istat-menus'
-cask 'karabiner'
 cask 'karabiner-elements'
-cask 'macid'
-cask 'neteasemusic'
-cask 'spectacle'
+cask 'spotify'
 cask 'station'
-cask 'sublime-text'
 
 # Development
 cask 'docker'
-cask 'hosts'
+cask 'goland'
 cask 'iterm2'
 cask 'phpstorm'
-cask 'postman'
-cask 'rubymine'
-cask 'sequel-pro'
-cask 'tower'
+# cask 'sequel-pro-nightly'
+cask 'tableplus'
+# cask 'tower'
 cask 'visual-studio-code'
 
 # Mac App Store
 mas 'Arimail 3', id: 918858936
 mas 'Reeder', id: 880001334
 mas 'PopClip', id: 445189367
-
+mas 'The Unarchiver', id: 425424353
+mas 'Pages', id: 409201541
+mas 'Keynote', id: 409183694
+mas 'LINE', id: 539883307
+mas 'Numbers', id: 409203825
