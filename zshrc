@@ -10,7 +10,8 @@ ZSH_THEME="killtw"
 # functional
 . ~/dotfiles/functional
 
-# DISABLE_AUTO_UPDATE="false"
+DISABLE_AUTO_UPDATE="false"
+HOMEBREW_NO_AUTO_UPDATE=1
 
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 plugins=(zsh-syntax-highlighting z keychain zsh-autosuggestions asdf kubectl kops helm)
