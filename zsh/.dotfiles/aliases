@@ -5,8 +5,7 @@ alias cat="bat"
 alias ls="exa -bh --color=auto"
 
 function mk() {
-    mkdir -p -- "$1"
-    cd -P -- "$1"
+    mkdir -p "$@" && cd "$_";
 }
 
 # Git

@@ -57,6 +57,8 @@ _homebrew:
 	brew tap Homebrew/bundle
 	brew bundle --file=$(DOTFILE)/homebrew/Brewfile
 	brew bundle --file=$(DOTFILE)/homebrew/Caskfile
+    cp $(DOTFILE)/iterm2/com.googlecode.iterm2.plist ~/Library/Preferences
+    chmod 600 ~/Library/Preferences/com.googlecode.iterm2.plist
 
 _tmux:
 	ln -fs $(DOTFILE)/tmux/.tmux.conf ~/.tmux.conf
