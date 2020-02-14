@@ -12,28 +12,7 @@ endif
 ifeq ($(OS),Linux)
 	make _zsh _vim _git _tmux _ssh
 else
-	# Expand save panel by default
-	defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
-	# Check for software updates daily, not just once per week
-	defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
-	# Avoid creating .DS_Store files on network volumes
-	defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
-	# Show the ~/Library folder
-	chflags nohidden ~/Library
-	# Use current directory as default search scope in Finder
-	defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
-	# Show icons for hard drives, servers, and removable media on the desktop
-	defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true && \
-	defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true && \
-	defaults write com.apple.finder ShowMountedServersOnDesktop -bool true && \
-	defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
-
-  # Change screenshot folder
-	defaults write com.apple.screencapture location ~/Downloads
-	# Change screenshot filetype to png
-	defaults write com.apple.screencapture type png
-
-	make _homebrew _zsh _vim _git _tmux _ssh
+	make _homebrew _zsh _vim _git _tmux _ssh _osx
 endif
 
 _zsh:
@@ -65,3 +44,37 @@ _tmux:
 
 _ssh:
 	ln -fs $(DOTFILE)/ssh/.ssh ~/.ssh
+
+_osx:
+    killall cfprefsd
+
+    # Expand save panel by default
+	defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+	# Check for software updates daily, not just once per week
+	defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+    # Download newly available updates in background
+    defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
+	# Avoid creating .DS_Store files on network volumes
+	defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+	# Show the ~/Library folder
+	chflags nohidden ~/Library
+	# Use current directory as default search scope in Finder
+	defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+	# Show icons for hard drives, servers, and removable media on the desktop
+	defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+	defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+	defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+	defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+    # Change screenshot folder
+	defaults write com.apple.screencapture location ~/Downloads
+	# Change screenshot filetype to png
+	defaults write com.apple.screencapture type png
+    # tab moves focus through All controls
+    defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
+    # tap to click
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+    # Keep folders on top when sorting by name
+    defaults write com.apple.finder _FXSortFoldersFirst -bool true
+
+    killall Finder
+
