@@ -9,7 +9,6 @@ YB=$fg_blod[yellow]
 RESET=$reset_color
 
 #PREFIX
-#PREFIX='[%{$B%}$(whoami)%{$RESET%}]'
 PROMPT='[%{$B%}%n%{$Y%}@%{$R%}%m%{$RESET%}] %{$fg[cyan]%}%1~ %{$RESET%}$(git_prompt_info)%% %b%{$RESET%}'
 
 RPROMPT='[%{$G%}%T%f]%{$RESET%}'

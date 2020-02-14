@@ -1,6 +1,8 @@
 # General
-alias ..="cd .."
+alias -g ..="cd .."
+alias -g ...="cd ../.."
 alias cat="bat"
+alias ls="exa -bh --color=auto"
 
 function mk() {
     mkdir -p -- "$1"
@@ -16,6 +18,29 @@ alias bc="brew cask"
 # Docker
 alias dc="docker-compose"
 alias ctop="docker run --rm -ti --name ctop -v /var/run/docker.sock:/var/run/docker.sock quay.io/vektorlab/ctop:latest"
+function docker-cleanup {
+  EXITED=$(docker ps -q -f status=exited)
+  DANGLING=$(docker images -q -f "dangling=true")
+
+  if [ "$1" = "--dry-run" ]; then
+    echo "==> Would stop containers:"
+    echo $EXITED
+    echo "==> And images:"
+    echo $DANGLING
+  else
+    if [ -n "$EXITED" ]; then
+      docker rm -f $EXITED
+    else
+      echo "No containers to remove."
+    fi
+    if [ -n "$DANGLING" ]; then
+      docker rmi -f $DANGLING
+    else
+      echo "No images to remove."
+    fi
+  fi
+}
+
 
 # PHP
 alias x="composer"

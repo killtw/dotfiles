@@ -35,6 +35,7 @@ else
 
 	make _homebrew _zsh _vim _git _tmux
 endif
+
 _zsh:
 ifeq (, $(shell which zsh))
 	sudo apt-get update -y
@@ -45,16 +46,20 @@ endif
 	ln -fs $(DOTFILE)/zshrc ~/.zshrc
 	ln -fs $(DOTFILE)/oh-my-zsh/custom/*.zsh-theme ~/.oh-my-zsh/custom
 	ln -fs $(DOTFILE)/oh-my-zsh/custom/plugins/* ~/.oh-my-zsh/custom/plugins
+
 _vim:
 	ln -fs $(DOTFILE)/vim ~/.vim
 	ln -fs $(DOTFILE)/vimrc ~/.vimrc
+
 _git:
 	ln -fs $(DOTFILE)/gitconfig ~/.gitconfig
 	ln -fs $(DOTFILE)/gitignore_global ~/.gitignore_global
+
 _homebrew:
 	@ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	brew tap Homebrew/bundle
 	brew bundle
 	brew bundle --file=$(DOTFILE)/Caskfile
+
 _tmux:
 	ln -fs $(DOTFILE)/tmux.conf ~/.tmux.conf
