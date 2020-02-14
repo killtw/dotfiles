@@ -2,7 +2,7 @@ OS := $(shell uname)
 DOTFILE := $(shell pwd)
 
 all:
-	ln -fs $(DOTFILE)/dotfiles ~
+	ln -fs $(DOTFILE)/zsh/.dotfiles ~
 
 ifeq (, $(shell which git))
 	sudo apt-get update -y
@@ -10,7 +10,7 @@ ifeq (, $(shell which git))
 endif
 
 ifeq ($(OS),Linux)
-	make _zsh _vim _git _tmux
+	make _zsh _vim _git _tmux _ssh
 else
 	# Expand save panel by default
 	defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -33,7 +33,7 @@ else
 	# Change screenshot filetype to png
 	defaults write com.apple.screencapture type png
 
-	make _homebrew _zsh _vim _git _tmux
+	make _homebrew _zsh _vim _git _tmux _ssh
 endif
 
 _zsh:
@@ -41,25 +41,25 @@ ifeq (, $(shell which zsh))
 	sudo apt-get update -y
 	sudo apt-get install zsh -y
 endif
-	@sh -c "$$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 	rm ~/.zshrc
-	ln -fs $(DOTFILE)/zshrc ~/.zshrc
-	ln -fs $(DOTFILE)/oh-my-zsh/custom/*.zsh-theme ~/.oh-my-zsh/custom
-	ln -fs $(DOTFILE)/oh-my-zsh/custom/plugins/* ~/.oh-my-zsh/custom/plugins
+	ln -fs $(DOTFILE)/zsh/.zshrc ~/.zshrc
 
 _vim:
-	ln -fs $(DOTFILE)/vim ~/.vim
-	ln -fs $(DOTFILE)/vimrc ~/.vimrc
+	ln -fs $(DOTFILE)/vim/.vim ~/.vim
+	ln -fs $(DOTFILE)/vim/.vimrc ~/.vimrc
 
 _git:
-	ln -fs $(DOTFILE)/gitconfig ~/.gitconfig
-	ln -fs $(DOTFILE)/gitignore_global ~/.gitignore_global
+	ln -fs $(DOTFILE)/git/.gitconfig ~/.gitconfig
+	ln -fs $(DOTFILE)/git/.gitignore_global ~/.gitignore_global
 
 _homebrew:
 	@ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	brew tap Homebrew/bundle
-	brew bundle
-	brew bundle --file=$(DOTFILE)/Caskfile
+	brew bundle --file=$(DOTFILE)/homebrew/Brewfile
+	brew bundle --file=$(DOTFILE)/homebrew/Caskfile
 
 _tmux:
-	ln -fs $(DOTFILE)/tmux.conf ~/.tmux.conf
+	ln -fs $(DOTFILE)/tmux/.tmux.conf ~/.tmux.conf
+
+_ssh:
+	ln -fs $(DOTFILE)/ssh/.ssh ~/.ssh

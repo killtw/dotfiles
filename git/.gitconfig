@@ -1,0 +1,24 @@
+[user]
+	name = Karl Li
+	email = killtw@gmail.com
+[github]
+	user = killtw
+[color]
+	ui = true
+[core]
+	editor = vim
+	excludesfile = /Users/killtw/.gitignore_global
+[alias]
+  br = branch
+  co = checkout
+  l  = "!source ~/.dotfiles/githelper && pretty_git_log"
+[apply]
+	whitespace = nowarn
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[pull]
+	rebase = preserve
+[rebase]
+	autoStash = true
