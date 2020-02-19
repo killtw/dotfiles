@@ -70,11 +70,15 @@ _osx:
 	# Change screenshot filetype to png
 	defaults write com.apple.screencapture type png
     # tab moves focus through All controls
-    defaults write NSGlobalDomain AppleKeyboardUIMode -int 2
+    defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
     # tap to click
     defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+    defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
     # Keep folders on top when sorting by name
     defaults write com.apple.finder _FXSortFoldersFirst -bool true
+    # enable three fingers drag
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+    defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
     killall Finder
 
