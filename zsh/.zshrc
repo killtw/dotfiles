@@ -15,20 +15,20 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-ZSH_AUTOSUGGEST_COMPLETION_IGNORE='( |man |pikaur -S )*'
+ZSH_AUTOSUGGEST_COMPLETION_IGNORE='( |man )*'
 
 source ~/.dotfiles/aliases
 
-# Homebrew install binaries is high priority
-export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH
-# Composer
-if [[ -x "$(command -v composer)" ]]; then
-    export PATH=$PATH:$HOME/.composer/vendor/bin
-fi
 # Yarn
 if [[ -x "$(command -v yarn)" ]]; then
     export PATH=$PATH:`yarn global bin`
 fi
+# Composer
+if [[ -x "$(command -v composer)" ]]; then
+    export PATH=$PATH:$HOME/.composer/vendor/bin
+fi
+# Homebrew
+export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH
 # Golang
 export GOPATH="$HOME/go"
 
@@ -50,9 +50,7 @@ zinit wait lucid for \
     OMZ::lib/completion.zsh \
     OMZ::lib/git.zsh \
     OMZ::lib/history.zsh \
-    OMZ::lib/key-bindings.zsh \
- atload"unalias grv g" \
-    OMZ::plugins/git/git.plugin.zsh
+    OMZ::lib/key-bindings.zsh
 
 zinit wait lucid for \
     skywind3000/z.lua \
@@ -76,5 +74,8 @@ zinit wait lucid for \
     zsh-users/zsh-completions
 
 # Theme
-zinit ice wait'!' lucid
-zinit snippet 'https://github.com/killtw/dotfiles/blob/master/zsh/killtw.zsh-theme'
+# zinit ice wait'!' lucid
+# zinit snippet 'https://github.com/killtw/dotfiles/blob/master/zsh/killtw.zsh-theme'
+
+zinit lucid pick"/dev/null" multisrc"{async,killtw}.zsh" nocd for \
+    killtw/killtw.zsh
