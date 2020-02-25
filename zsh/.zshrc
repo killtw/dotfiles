@@ -15,9 +15,8 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
-ZSH_AUTOSUGGEST_COMPLETION_IGNORE='( |man )*'
 
-source ~/.dotfiles/aliases
+source "$HOME/.dotfiles/aliases"
 
 # Yarn
 if [[ -x "$(command -v yarn)" ]]; then
@@ -32,6 +31,8 @@ export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH
 # Golang
 export GOPATH="$HOME/go"
 
+module_path+=("$HOME/.zinit/bin/zmodules/Src"); zmodload zdharma/zplugin &>/dev/null
+
 ### Load Zinit
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
@@ -41,29 +42,30 @@ fi
 source "$HOME/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
+### Zinit loaded
 
 zinit lucid for \
     zinit-zsh/z-a-bin-gem-node \
-    OMZ::plugins/keychain/keychain.plugin.zsh
-
-zinit wait lucid for \
     OMZ::lib/completion.zsh \
-    OMZ::lib/git.zsh \
     OMZ::lib/history.zsh \
     OMZ::lib/key-bindings.zsh
 
+zinit lucid for \
+    as"program" pick"keychain" funtoo/keychain \
+    OMZ::plugins/keychain/keychain.plugin.zsh
+
 zinit wait lucid for \
     skywind3000/z.lua \
-    OMZ::plugins/asdf/asdf.plugin.zsh \
-    OMZ::plugins/kubectl/kubectl.plugin.zsh \
-    OMZ::plugins/helm/helm.plugin.zsh
+ pick"asdf.sh" src"completions/asdf.bash" \
+    @asdf-vm/asdf
 
 zinit wait"2" lucid as"null" from"gh-r" for \
-    mv"exa* -> exa" sbin   ogham/exa \
+    mv"exa* -> exa" sbin ogham/exa \
     mv"bat* -> bat" sbin"bat/bat" @sharkdp/bat
 
-zinit as"completion" lucid
-zinit snippet OMZ::plugins/docker/_docker
+zinit as"completion" lucid for \
+    OMZ::plugins/kubectl/kubectl.plugin.zsh \
+    OMZ::plugins/helm/helm.plugin.zsh
 
 zinit wait lucid for \
  atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
@@ -71,11 +73,10 @@ zinit wait lucid for \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions \
  blockf \
-    zsh-users/zsh-completions
+    zsh-users/zsh-completions \
+    OMZ::plugins/docker/_docker
 
 # Theme
-# zinit ice wait'!' lucid
-# zinit snippet 'https://github.com/killtw/dotfiles/blob/master/zsh/killtw.zsh-theme'
-
-zinit lucid pick"/dev/null" multisrc"{async,killtw}.zsh" nocd for \
+zinit wait'!' as"null" nocd lucid for \
+ atload"!prompt_precmd" multisrc"{async,killtw}.zsh" \
     killtw/killtw.zsh
