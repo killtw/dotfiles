@@ -44,7 +44,6 @@ function docker-cleanup {
 # PHP
 alias x="composer"
 alias art="php artisan"
-#alias phpunit="php vendor/bin/phpunit"
 
 function tinker() {
     if [ -e "artisan" ] ; then
@@ -65,4 +64,9 @@ function migrate() {
 function rollback() {
   [ -e "artisan" ] && php artisan migrate:rollback
   [ -e "Rakefile" ] && bundle exec rake db:rollback
+}
+
+function phpunit {
+    [ -e "vendor/bin/phpunit" ] && vendor/bin/phpunit "$@"
+    [[ -x "$(command -v phpunit)" ]] && phpunit "$@"
 }
