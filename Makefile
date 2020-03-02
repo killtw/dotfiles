@@ -36,8 +36,8 @@ _homebrew:
 	brew tap Homebrew/bundle
 	brew bundle --file=$(DOTFILE)/homebrew/Brewfile
 	brew bundle --file=$(DOTFILE)/homebrew/Caskfile
-    cp $(DOTFILE)/iterm2/com.googlecode.iterm2.plist ~/Library/Preferences
-    chmod 600 ~/Library/Preferences/com.googlecode.iterm2.plist
+	cp $(DOTFILE)/iterm2/com.googlecode.iterm2.plist ~/Library/Preferences
+	chmod 600 ~/Library/Preferences/com.googlecode.iterm2.plist
 
 _tmux:
 	ln -fs $(DOTFILE)/tmux/.tmux.conf ~/.tmux.conf
@@ -46,14 +46,14 @@ _ssh:
 	ln -fs $(DOTFILE)/ssh/.ssh ~/.ssh
 
 _osx:
-    killall cfprefsd
+	killall cfprefsd
 
     # Expand save panel by default
 	defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 	# Check for software updates daily, not just once per week
 	defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
     # Download newly available updates in background
-    defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
+	defaults write com.apple.SoftwareUpdate AutomaticDownload -int 1
 	# Avoid creating .DS_Store files on network volumes
 	defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 	# Show the ~/Library folder
@@ -70,15 +70,15 @@ _osx:
 	# Change screenshot filetype to png
 	defaults write com.apple.screencapture type png
     # tab moves focus through All controls
-    defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+	defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
     # tap to click
-    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
-    defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
+	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+	defaults write com.apple.AppleMultitouchTrackpad Clicking -bool true
     # Keep folders on top when sorting by name
-    defaults write com.apple.finder _FXSortFoldersFirst -bool true
+	defaults write com.apple.finder _FXSortFoldersFirst -bool true
     # enable three fingers drag
-    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
-    defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+	defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+	defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
 
-    killall Finder
+	killall Finder
 
