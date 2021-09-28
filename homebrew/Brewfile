@@ -1,5 +1,6 @@
 brew 'mas'
 brew 'ssh-copy-id'
+brew 'svn'
 brew 'tmux'
 brew 'vim'
 brew 'wget'

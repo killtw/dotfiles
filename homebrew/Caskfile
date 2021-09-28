@@ -19,37 +19,38 @@ cask 'quicklook-csv'
 cask 'quicklook-json'
 
 # Applications
-cask '1password6'
+cask '1password'
 cask 'alfred'
+cask 'adguard'
 cask 'appcleaner'
 cask 'bartender'
 cask 'caffeine'
 # cask 'dropbox'
 cask 'droplr'
-cask 'google-chrome'
-cask 'google-drive-file-stream'
+cask 'ferdi'
 cask 'iina'
 cask 'istat-menus'
 cask 'karabiner-elements'
+cask 'microsoft-edge'
 cask 'spotify'
-cask 'station'
+cask 'vanilla'
 
 # Development
 cask 'docker'
 cask 'goland'
 cask 'iterm2'
 cask 'phpstorm'
-# cask 'sequel-pro-nightly'
+cask 'postman'
 cask 'tableplus'
-# cask 'tower'
 cask 'visual-studio-code'
 
 # Mac App Store
-mas 'Arimail 3', id: 918858936
-mas 'Reeder', id: 880001334
+mas 'Reeder', id: 1449412482
 mas 'PopClip', id: 445189367
 mas 'The Unarchiver', id: 425424353
 mas 'Pages', id: 409201541
 mas 'Keynote', id: 409183694
 mas 'LINE', id: 539883307
 mas 'Numbers', id: 409203825
+mas 'Spark', id: 1176895641
+mas 'Sequel Ace', id: 1518036000
