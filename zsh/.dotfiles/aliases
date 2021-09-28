@@ -8,12 +8,6 @@ function mk() {
     mkdir -p "$@" && cd "$_";
 }
 
-# Git
-alias gs="git status"
-
-# Homebrew
-alias bc="brew cask"
-
 # Docker
 alias dc="docker-compose"
 alias ctop="docker run --rm -ti --name ctop -v /var/run/docker.sock:/var/run/docker.sock quay.io/vektorlab/ctop:latest"
