@@ -12,7 +12,7 @@ endif
 ifeq ($(OS),Linux)
 	make _zsh _vim _git _tmux _ssh
 else
-	make _homebrew _zsh _vim _git _tmux _ssh _osx
+	make _homebrew _iterm2 _zsh _vim _git _tmux _ssh _osx
 endif
 
 _zsh:
@@ -33,9 +33,10 @@ _git:
 
 _homebrew:
 	@ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	brew tap Homebrew/bundle
 	brew bundle --file=$(DOTFILE)/homebrew/Brewfile
 	brew bundle --file=$(DOTFILE)/homebrew/Caskfile
+
+_iterm2:
 	cp $(DOTFILE)/iterm2/com.googlecode.iterm2.plist ~/Library/Preferences
 	chmod 600 ~/Library/Preferences/com.googlecode.iterm2.plist
 
