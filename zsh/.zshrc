@@ -31,8 +31,6 @@ export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH
 # Golang
 export GOPATH="$HOME/go"
 
-module_path+=("$HOME/.zinit/bin/zmodules/Src"); zmodload zdharma/zplugin &>/dev/null
-
 ### Load Zinit
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
@@ -55,21 +53,17 @@ zinit lucid for \
     OMZ::plugins/keychain/keychain.plugin.zsh
 
 zinit wait lucid for \
-    skywind3000/z.lua \
- pick"asdf.sh" src"completions/asdf.bash" \
-    @asdf-vm/asdf
+    skywind3000/z.lua
 
 zinit wait"2" lucid as"null" from"gh-r" for \
-    mv"exa* -> exa" sbin ogham/exa \
+    mv"bin/exa* -> exa" sbin"bin/exa" ogham/exa \
     mv"bat* -> bat" sbin"bat/bat" @sharkdp/bat
 
-zinit as"completion" lucid for \
-    OMZ::plugins/kubectl/kubectl.plugin.zsh \
-    OMZ::plugins/helm/helm.plugin.zsh
-
 zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
     zdharma/fast-syntax-highlighting \
+    zdharma/history-search-multi-word \
+    @asdf-vm/asdf \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions \
  blockf \
