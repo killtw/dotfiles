@@ -41,10 +41,10 @@ alias art="php artisan"
 
 function tinker() {
     if [ -e "artisan" ] ; then
-        if art | grep -q tinx ; then
-            art tinx
+        if [ -z "$1" ] ; then
+            php artisan tinker
         else
-            art tinker
+            php artisan tinker --execute="dd($1);"
         fi
     fi
     [ -e "Rakefile" ] && bundle exec rails c
