@@ -19,7 +19,7 @@
 	smudge = git-lfs smudge %f
 	required = true
 [pull]
-	rebase = preserve
+	rebase = true
 [rebase]
 	autoStash = true
 [commit]

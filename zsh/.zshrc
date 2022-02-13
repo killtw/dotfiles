@@ -22,6 +22,7 @@ source "$HOME/.dotfiles/aliases"
 if [[ -x "$(command -v composer)" ]]; then
     export PATH=$PATH:$HOME/.composer/vendor/bin
 fi
+export PHP_CS_FIXER_IGNORE_ENV=1
 # Homebrew
 export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH
 # Golang
@@ -51,15 +52,16 @@ zinit lucid for \
 
 zinit wait lucid for \
     skywind3000/z.lua \
+    OMZP::kubectl \
     pack"binary" fzf \
     Aloxaf/fzf-tab
 
-zinit wait"2" lucid as"null" from"gh-r" for \
-    mv"bin/exa* -> exa" ogham/exa \
-    mv"bat* -> bat" @sharkdp/bat
+zinit wait"2" lucid as"program" from"gh-r" for \
+    pick"bin/exa" ogham/exa \
+    mv"bat* -> bat" pick"bat/bat" @sharkdp/bat \
+    mv"jq-* -> jq" pick"jq" stedolan/jq
 
 zinit wait"3" lucid for \
-    OMZP::kubectl \
     as"program" from"gh" pick"(kubectx|kubens)" ahmetb/kubectx
 
 zinit wait lucid for \
