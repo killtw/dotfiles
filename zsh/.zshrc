@@ -57,9 +57,9 @@ zinit wait lucid for \
     Aloxaf/fzf-tab
 
 zinit wait"2" lucid as"program" from"gh-r" for \
-    pick"bin/exa" ogham/exa \
-    mv"bat* -> bat" pick"bat/bat" @sharkdp/bat \
-    mv"jq-* -> jq" pick"jq" stedolan/jq
+    atclone"cp -vf completions/exa.zsh _exa" sbin"**/exa -> exa" ogham/exa \
+    sbin"**/bat -> bat" @sharkdp/bat \
+    sbin"jq* -> jq" stedolan/jq
 
 zinit wait"3" lucid for \
     as"program" from"gh" pick"(kubectx|kubens)" ahmetb/kubectx
