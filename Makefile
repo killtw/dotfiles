@@ -20,7 +20,7 @@ ifeq (, $(shell which zsh))
 	sudo apt-get update -y
 	sudo apt-get install zsh -y
 endif
-	rm ~/.zshrc
+	[ -f ~/.zshrc ] && rm ~/.zshrc
 	ln -fs $(DOTFILE)/zsh/.zshrc ~/.zshrc
 
 _vim:
