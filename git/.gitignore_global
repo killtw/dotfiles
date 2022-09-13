@@ -3,3 +3,6 @@ Thumbs.db
 .idea
 composer.phar
 .vscode
+*.nosync
+.tool-versions
+
