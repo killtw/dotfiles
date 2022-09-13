@@ -1,16 +1,32 @@
 # General
 alias -g ..="cd .."
 alias -g ...="cd ../.."
-alias cat="bat"
-alias ls="exa -bh --color=auto"
+
+function ls() {
+    if [ -x "$(command -v exa)" ] ; then
+        exa -bh --color=auto "$@"
+    else
+        /bin/ls "$@"
+    fi
+}
+
+function cat() {
+    if [ -x "$(command -v bat)" ] ; then
+        bat "$@"
+    else
+        /bin/cat "$@"
+    fi
+}
 
 function mk() {
     mkdir -p "$@" && cd "$_";
 }
 
 # Docker
-alias dc="docker-compose"
+alias docker="nerdctl"
+alias dc="docker compose"
 alias ctop="docker run --rm -ti --name ctop -v /var/run/docker.sock:/var/run/docker.sock quay.io/vektorlab/ctop:latest"
+
 function docker-cleanup {
   EXITED=$(docker ps -q -f status=exited)
   DANGLING=$(docker images -q -f "dangling=true")
