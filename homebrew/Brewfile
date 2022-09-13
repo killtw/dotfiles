@@ -7,6 +7,7 @@ brew 'wget'
 brew 'zsh'
 
 # Develop
+brew 'colima'
 brew 'gnupg'
 brew 'imagemagick'
 
