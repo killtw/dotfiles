@@ -52,17 +52,23 @@ zinit lucid for \
 
 zinit wait lucid for \
     skywind3000/z.lua \
-    OMZP::kubectl \
-    pack"binary" fzf \
-    Aloxaf/fzf-tab
+    from'gh-r' sbin'fzf' junegunn/fzf \
+    Aloxaf/fzf-tab \
+    https://github.com/junegunn/fzf/raw/master/shell/{'completion','key-bindings'}.zsh
 
 zinit wait"2" lucid as"program" from"gh-r" for \
     atclone"cp -vf completions/exa.zsh _exa" sbin"**/exa -> exa" ogham/exa \
     sbin"**/bat -> bat" @sharkdp/bat \
     sbin"jq* -> jq" stedolan/jq
 
-zinit wait"3" lucid for \
+zinit wait"3" lucid has"kubectl" for \
+    OMZP::kubectl \
+    as"program" id-as"kubectl-completion" atclone"kubectl completion zsh > _kubectl" atpull"%atclone" zdharma-continuum/null \
+    as"program" id-as"helm-completion" atclone"helm completion zsh > _helm" atpull"%atclone" zdharma-continuum/null \
     as"program" from"gh" pick"(kubectx|kubens)" ahmetb/kubectx
+
+zinit wait"3" lucid has"nerdctl" for \
+    as"program" id-as"nerdctl-completion" atclone"nerdctl completion zsh > _nerdctl" atpull"%atclone" zdharma-continuum/null
 
 zinit wait lucid for \
  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
@@ -71,11 +77,12 @@ zinit wait lucid for \
     @asdf-vm/asdf \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions \
- blockf \
+ blockf atpull'zinit creinstall -q .' \
     zsh-users/zsh-completions \
     OMZP::docker/_docker
 
 # Theme
-zinit wait'!' as"null" nocd lucid for \
- atload"!prompt_precmd" multisrc"{async,killtw}.zsh" \
-    killtw/killtw.zsh
+#zinit wait'!' as"null" nocd lucid for \
+#    atload"!prompt_precmd" multisrc"{async,killtw}.zsh" killtw/killtw.zsh
+zinit wait"!" as"command" from"gh-r" lucid for \
+    atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" atpull"%atclone" src"init.zsh" starship/starship
