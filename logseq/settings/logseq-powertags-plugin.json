@@ -1,0 +1,18 @@
+{
+  "addTypeProperty": false,
+  "autoParse": false,
+  "parseBlock": false,
+  "disabled": false,
+  "savedTags": {
+    "#movie": [
+      "title",
+      "director",
+      "actors",
+      "released",
+      "watched",
+      "rating",
+      "tags"
+    ]
+  },
+  "savedBlks": {}
+}

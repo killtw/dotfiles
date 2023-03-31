@@ -8,9 +8,9 @@ ifeq (, $(shell which git))
 endif
 
 ifeq ($(OS),Linux)
-	make _terminal _vim _git
+	make _terminal _vim _git _logseq
 else
-	make _homebrew _iterm2 _terminal _vim _git _osx _kube
+	make _homebrew _iterm2 _terminal _vim _git _osx _kube _logseq
 endif
 
 _terminal:
@@ -85,3 +85,6 @@ _kube:
 	ln -fs $(DOTFILE)/kube/config.eksctl.lock ~/.kube/config.eksctl.lock
 	ln -fs $(DOTFILE)/kube/kubectx ~/.kube/kubectx
 	chmod go-r ~/.kube/config
+
+ _logseq:
+	ln -fs $(DOTFILE)/logseq ~/.logseq

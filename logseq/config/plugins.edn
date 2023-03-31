@@ -1,0 +1,9 @@
+{:logseq-tabs {:version "v1.18.3", :repo "pengx17/logseq-plugin-tabs", :effect true, :theme false}
+ :logseq-journals-calendar {:version "v0.10.8", :repo "xyhp915/logseq-journals-calendar", :effect false, :theme false}
+ :logseq-bullet-threading {:version "v1.1.1", :repo "pengx17/logseq-plugin-bullet-threading", :effect false, :theme false}
+ :logseq-agenda {:version "v2.14.0", :repo "haydenull/logseq-plugin-agenda", :effect true, :theme false}
+ :logseq-tags {:version "v0.1.2", :repo "gidongkwon/logseq-plugin-tags", :effect false, :theme false}
+ :logseq-bonofix-theme {:version "v3.8.5", :repo "sansui233/logseq-bonofix-theme", :effect false, :theme true}
+ :logseq-mermaid-plugin {:version "1.2.1", :repo "hkgnp/logseq-mermaid-plugin", :effect false, :theme false}
+ :logseq-powertags-plugin {:version "0.2.2", :repo "hkgnp/logseq-powertags-plugin", :effect true, :theme false}
+ :logseq-awesome-props {:version "v1.10.0", :repo "yoyurec/logseq-awesome-props", :effect true, :theme false}}
