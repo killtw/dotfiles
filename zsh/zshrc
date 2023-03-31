@@ -1,4 +1,6 @@
-HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_ENV_HINTS=1
+export XDG_CACHE_HOME=~/.cache
 
 setopt auto_cd multios prompt_subst promptsubst
 setopt auto_pushd pushd_ignore_dups pushdminus
@@ -16,13 +18,12 @@ ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
 
-source "$HOME/.dotfiles/aliases"
+source "$HOME/.aliases"
 
 # Composer
 if [[ -x "$(command -v composer)" ]]; then
     export PATH=$PATH:$HOME/.composer/vendor/bin
 fi
-export PHP_CS_FIXER_IGNORE_ENV=1
 # Homebrew
 export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH
 # Golang
@@ -46,15 +47,15 @@ zinit lucid for \
     OMZL::history.zsh \
     OMZL::key-bindings.zsh
 
-zinit lucid for \
-    as"program" pick"keychain" funtoo/keychain \
-    OMZP::keychain \
+#zinit lucid for \
+#    as"program" pick"keychain" funtoo/keychain \
+#    OMZP::keychain \
 
 zinit wait lucid for \
     skywind3000/z.lua \
-    from'gh-r' sbin'fzf' junegunn/fzf \
+    from"gh-r" sbin"fzf" junegunn/fzf \
     Aloxaf/fzf-tab \
-    https://github.com/junegunn/fzf/raw/master/shell/{'completion','key-bindings'}.zsh
+    https://github.com/junegunn/fzf/raw/master/shell/{"completion","key-bindings"}.zsh
 
 zinit wait"2" lucid as"program" from"gh-r" for \
     atclone"cp -vf completions/exa.zsh _exa" sbin"**/exa -> exa" ogham/exa \
@@ -64,11 +65,13 @@ zinit wait"2" lucid as"program" from"gh-r" for \
 zinit wait"3" lucid has"kubectl" for \
     OMZP::kubectl \
     as"program" id-as"kubectl-completion" atclone"kubectl completion zsh > _kubectl" atpull"%atclone" zdharma-continuum/null \
-    as"program" id-as"helm-completion" atclone"helm completion zsh > _helm" atpull"%atclone" zdharma-continuum/null \
+    as"completion" id-as"helm-completion" atclone"helm completion zsh > _helm" atpull"%atclone" zdharma-continuum/null \
     as"program" from"gh" pick"(kubectx|kubens)" ahmetb/kubectx
 
-zinit wait"3" lucid has"nerdctl" for \
-    as"program" id-as"nerdctl-completion" atclone"nerdctl completion zsh > _nerdctl" atpull"%atclone" zdharma-continuum/null
+zinit wait"3" lucid has"colima" for \
+    as"completion" id-as"colima-completion" atclone"colima completion zsh > _colima" atpull"%atclone" zdharma-continuum/null \
+    as"null" id-as"nerdctl" atclone"colima nerdctl install" atpull"%atclone" zdharma-continuum/null \
+    as"completions" id-as"nerdctl-completion" atclone"nerdctl completion zsh > _nerdctl" atpull"%atclone" zdharma-continuum/null
 
 zinit wait lucid for \
  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
@@ -77,12 +80,12 @@ zinit wait lucid for \
     @asdf-vm/asdf \
  atload"!_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions \
- blockf atpull'zinit creinstall -q .' \
+ blockf atpull"zinit creinstall -q ." \
     zsh-users/zsh-completions \
     OMZP::docker/_docker
 
 # Theme
-#zinit wait'!' as"null" nocd lucid for \
-#    atload"!prompt_precmd" multisrc"{async,killtw}.zsh" killtw/killtw.zsh
 zinit wait"!" as"command" from"gh-r" lucid for \
     atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" atpull"%atclone" src"init.zsh" starship/starship
+
+#source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"

@@ -2,30 +2,33 @@ OS := $(shell uname)
 DOTFILE := $(shell pwd)
 
 all:
-	ln -fs $(DOTFILE)/zsh/.dotfiles ~
-
 ifeq (, $(shell which git))
 	sudo apt-get update -y
 	sudo apt-get install git -y
 endif
 
 ifeq ($(OS),Linux)
-	make _zsh _vim _git _tmux _ssh
+	make _terminal _vim _git
 else
-	make _homebrew _iterm2 _zsh _vim _git _tmux _ssh _osx
+	make _homebrew _iterm2 _terminal _vim _git _osx _kube
 endif
 
-_zsh:
+_terminal:
 ifeq (, $(shell which zsh))
 	sudo apt-get update -y
 	sudo apt-get install zsh -y
 endif
 	[ -f ~/.zshrc ] && rm ~/.zshrc
-	ln -fs $(DOTFILE)/zsh/.zshrc ~/.zshrc
+	ln -fs $(DOTFILE)/zsh/zshrc ~/.zshrc
+	ln -fs $(DOTFILE)/zsh/aliases ~/.aliases
+	ln -fs $(DOTFILE)/zsh/starship.toml ~/.config/starship.toml
+
+	ln -fs $(DOTFILE)/tmux/tmux.conf ~/.tmux.conf
+	ln -fs $(DOTFILE)/ssh/* ~/.ssh
 
 _vim:
-	ln -fs $(DOTFILE)/vim/.vim ~/.vim
-	ln -fs $(DOTFILE)/vim/.vimrc ~/.vimrc
+	ln -fs $(DOTFILE)/vim/vim/* ~/.vim
+	ln -fs $(DOTFILE)/vim/vimrc ~/.vimrc
 
 _git:
 	ln -fs $(DOTFILE)/git/.gitconfig ~/.gitconfig
@@ -33,18 +36,12 @@ _git:
 
 _homebrew:
 	@ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	brew bundle --file=$(DOTFILE)/homebrew/Brewfile
-	brew bundle --file=$(DOTFILE)/homebrew/Caskfile
+	brew bundle --file=$(DOTFILE)/homebrew/Brewfile --no-lock
+	brew bundle --file=$(DOTFILE)/homebrew/Caskfile --no-lock
 
 _iterm2:
 	cp $(DOTFILE)/iterm2/com.googlecode.iterm2.plist ~/Library/Preferences
 	chmod 600 ~/Library/Preferences/com.googlecode.iterm2.plist
-
-_tmux:
-	ln -fs $(DOTFILE)/tmux/.tmux.conf ~/.tmux.conf
-
-_ssh:
-	ln -fs $(DOTFILE)/ssh/.ssh ~/.ssh
 
 _osx:
 	killall cfprefsd
@@ -83,3 +80,8 @@ _osx:
 
 	killall Finder
 
+_kube:
+	ln -fs $(DOTFILE)/kube/config ~/.kube/config
+	ln -fs $(DOTFILE)/kube/config.eksctl.lock ~/.kube/config.eksctl.lock
+	ln -fs $(DOTFILE)/kube/kubectx ~/.kube/kubectx
+	chmod go-r ~/.kube/config

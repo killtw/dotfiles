@@ -7,8 +7,9 @@ tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-drivers'
 
 # Fonts
-cask 'font-source-code-pro'
-cask 'font-source-code-pro-for-powerline'
+cask 'font-sauce-code-pro-nerd-font'
+# cask 'font-source-code-pro'
+# cask 'font-source-code-pro-for-powerline'
 
 # Quick Look plugins
 cask 'qlcolorcode'
@@ -33,9 +34,11 @@ cask 'ferdium'
 cask 'iina'
 cask 'istat-menus'
 cask 'karabiner-elements'
+cask 'logseq'
 cask 'microsoft-edge'
 cask 'raycast'
 cask 'spotify'
+cask 'surge'
 
 # Development
 # cask 'docker'

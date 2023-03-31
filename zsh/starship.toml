@@ -1,0 +1,8 @@
+[aws]
+disabled=true
+
+[kubernetes]
+disabled=false
+detect_folders=['.helm']
+detect_files=[ 'docker-compose.yml', 'docker-compose.yaml', 'Dockerfile', 'helmfile.yaml' ]
+

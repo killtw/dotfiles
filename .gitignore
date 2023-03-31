@@ -1,5 +1,6 @@
-ssh/.ssh/*
-ssh/.gnupg/*
-!ssh/.ssh/config
-/vim/.netrwhist
+ssh/*
+!ssh/config
 kube/*
+logseq/*
+!logseq/config
+!logseq/settings
