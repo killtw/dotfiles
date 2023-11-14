@@ -1,5 +1,6 @@
 OS := $(shell uname)
-DOTFILE := $(shell pwd)
+
+.PHONY: all
 
 all:
 ifeq (, $(shell which git))
@@ -7,40 +8,44 @@ ifeq (, $(shell which git))
 	sudo apt-get install git -y
 endif
 
-ifeq ($(OS),Linux)
-	make _terminal _vim _git _logseq
-else
-	make _homebrew _iterm2 _terminal _vim _git _osx _kube _logseq
+ifneq ($(OS),Linux)
+	osx
 endif
+	linux
 
-_terminal:
+osx: _homebrew _iterm2 _osx _app
+
+linux: _zsh _vim _git _kube
+
+_zsh:
 ifeq (, $(shell which zsh))
 	sudo apt-get update -y
 	sudo apt-get install zsh -y
 endif
-	[ -f ~/.zshrc ] && rm ~/.zshrc
-	ln -fs $(DOTFILE)/zsh/zshrc ~/.zshrc
-	ln -fs $(DOTFILE)/zsh/aliases ~/.aliases
-	ln -fs $(DOTFILE)/zsh/starship.toml ~/.config/starship.toml
+	test -L ${HOME}/.zshrc || rm -rf ${HOME}/.zshrc
+	ln -fs "${PWD}/zsh/zshrc" ${HOME}/.zshrc
+	ln -fs "${PWD}/zsh/zinit" ${HOME}/.zinit
+	ln -fs "${PWD}/zsh/aliases" ${HOME}/.aliases
+	ln -fs "${PWD}/zsh/starship.toml" ${HOME}/.config/starship.toml
 
-	ln -fs $(DOTFILE)/tmux/tmux.conf ~/.tmux.conf
-	ln -fs $(DOTFILE)/ssh/* ~/.ssh
+	ln -fs "${PWD}/tmux/tmux.conf" ${HOME}/.tmux.conf
+	ln -sf {"${PWD}",${HOME}}/.ssh
 
 _vim:
-	ln -fs $(DOTFILE)/vim/vim/* ~/.vim
-	ln -fs $(DOTFILE)/vim/vimrc ~/.vimrc
+	ln -fs "${PWD}/vim/vim/"* ${HOME}/.vim
+	ln -fs "${PWD}/vim/vimrc" ${HOME}/.vimrc
 
 _git:
-	ln -fs $(DOTFILE)/git/.gitconfig ~/.gitconfig
-	ln -fs $(DOTFILE)/git/.gitignore_global ~/.gitignore_global
+	ln -fs "${PWD}/git/.gitconfig" ~/.gitconfig
+	ln -fs "${PWD}/git/.gitignore_global" ~/.gitignore_global
 
 _homebrew:
-	@ruby -e "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	brew bundle --file=$(DOTFILE)/homebrew/Brewfile --no-lock
-	brew bundle --file=$(DOTFILE)/homebrew/Caskfile --no-lock
+	@bash -c "$$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	brew bundle --file="${PWD}/homebrew/Brewfile" --no-lock
+	brew bundle --file="${PWD}/homebrew/Caskfile" --no-lock
 
 _iterm2:
-	cp $(DOTFILE)/iterm2/com.googlecode.iterm2.plist ~/Library/Preferences
+	cp "${PWD}/iterm2/com.googlecode.iterm2.plist" ~/Library/Preferences
 	chmod 600 ~/Library/Preferences/com.googlecode.iterm2.plist
 
 _osx:
@@ -81,10 +86,9 @@ _osx:
 	killall Finder
 
 _kube:
-	ln -fs $(DOTFILE)/kube/config ~/.kube/config
-	ln -fs $(DOTFILE)/kube/config.eksctl.lock ~/.kube/config.eksctl.lock
-	ln -fs $(DOTFILE)/kube/kubectx ~/.kube/kubectx
-	chmod go-r ~/.kube/config
+	ln -fs "${PWD}/.kube/config" ${HOME}/.kube/config
+	chmod go-r ${HOME}/.kube/config
 
- _logseq:
-	ln -fs $(DOTFILE)/logseq ~/.logseq
+ _app:
+	ln -fs "${PWD}/logseq" ${HOME}/.logseq
+	ln -fs "${PWD}/alacritty" ${HOME}/.config/alacritty
