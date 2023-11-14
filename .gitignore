@@ -1,6 +1,5 @@
-ssh/*
-!ssh/config
-kube/*
+.ssh/*
+.kube/*
 logseq/*
 !logseq/config
 !logseq/settings
