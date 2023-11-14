@@ -22,9 +22,11 @@ cask 'quicklook-json'
 # Applications
 cask '1password7'
 cask 'adguard'
-cask 'aldente'
-cask 'alfred'
+cas 'alacritty'
+# cask 'aldente'
+# cask 'alfred'
 cask 'appcleaner'
+# cask 'battery'
 # cask 'bartender'
 cask 'caffeine'
 cask 'dozer'
@@ -32,18 +34,20 @@ cask 'dozer'
 # cask 'droplr'
 cask 'ferdium'
 cask 'iina'
-cask 'istat-menus'
-cask 'karabiner-elements'
+cask 'itsycal'
+# cask 'istat-menus'
+# cask 'karabiner-elements'
 cask 'logseq'
 cask 'microsoft-edge'
 cask 'raycast'
 cask 'spotify'
 cask 'surge'
+cas 'thor'
 
 # Development
 # cask 'docker'
 # cask 'goland'
-cask 'iterm2'
+# cask 'iterm2'
 cask 'lens'
 cask 'phpstorm'
 cask 'postman'
@@ -51,12 +55,12 @@ cask 'tableplus'
 cask 'visual-studio-code'
 
 # Mac App Store
+mas 'CodePiper', id: 1669959741
 mas 'Reeder', id: 1449412482
-mas 'PopClip', id: 445189367
-mas 'The Unarchiver', id: 425424353
 mas 'Pages', id: 409201541
+mas 'Spark', id: 1176895641
 mas 'Keynote', id: 409183694
 mas 'LINE', id: 539883307
+mas 'The Unarchiver', id: 425424353
+mas 'PopClip', id: 445189367
 mas 'Numbers', id: 409203825
-mas 'Spark', id: 1176895641
-mas 'Sequel Ace', id: 1518036000
